@@ -1,0 +1,50 @@
+Program for LEVEL 1
+TASK 1- 
+Number Guessing Game--
+
+import random
+
+# Set the difficulty level (range of numbers to guess from)
+print("Select difficulty level from easy, medium and hard")
+options=["easy","medium","hard"]
+difficulty= input("Enter your choice")
+# Options: "easy", "medium", "hard"
+
+if difficulty == "easy":
+    number_range = (1, 10)  # Range for easy difficulty
+elif difficulty == "medium":
+    number_range = (1, 20)  # Range for medium difficulty
+else:
+    number_range = (1, 50)  # Range for hard difficulty
+
+# Generate a random number within the chosen range
+secret_number = random.randint(*number_range)  # Unpack the range tuple
+
+# Welcome message
+print("Welcome to the Number Guessing Game!")
+
+# Initialize guess counter
+guesses = 0
+
+# Main game loop
+while True:
+    # Get user's guess
+    try:
+        guess = int(input("Guess a number between {} and {}: ".format(*number_range)))
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        continue
+
+    guesses += 1  # Increment guess counter
+
+    # Check guess
+    if guess == secret_number:
+        print("Congratulations! You guessed the number in {} guesses!".format(guesses))
+        break  # Exit the loop if guess is correct
+    elif guess < secret_number:
+        print("Too low, try again!")
+    else:
+        print("Too high, try again!")
+
+# Ending message
+print("Thanks for playing!")
