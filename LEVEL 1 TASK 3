@@ -1,0 +1,48 @@
+LEVEL 1
+TASK 3--QUIZ APPLICATION
+
+
+
+# Define questions and answers 
+questions = {
+    "What is the capital of France?": ["London", "Paris", "Berlin", "Rome"],
+    "What is the largest planet in our solar system?": ["Jupiter", "Mars", "Earth", "Venus"],
+    "What is the chemical symbol for water?": ["H2O", "CO2", "N2", "He"]
+}
+
+correct_answers = {
+    "What is the capital of France?": "Paris",
+    "What is the largest planet in our solar system?": "Jupiter",
+    "What is the chemical symbol for water?": "H2O"
+}
+
+# Initialize score variable
+score = 0
+
+# Iterate through each question
+for question, options in questions.items():
+  print(question)
+  # Display multiple choice options
+  for i, option in enumerate(options):
+    print(f"{i+1}. {option}")
+
+  # Get user's answer
+  while True:
+    try:
+      answer_index = int(input("Enter your answer (number): ")) - 1  # Adjust for 0-based indexing
+      if 0 <= answer_index < len(options):  # Check for valid answer index
+        break
+      else:
+        print("Invalid choice. Please enter a number between 1 and", len(options))
+    except ValueError:
+      print("Invalid input. Please enter a number.")
+
+  # Check if the answer is correct
+  if options[answer_index] == correct_answers[question]:
+    print("Correct!")
+    score += 1
+  else:
+    print("Incorrect. The correct answer is", correct_answers[question])
+
+# Display final score
+print("Your score is", score, "out of", len(questions))
