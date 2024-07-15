@@ -1,0 +1,33 @@
+LEVEL 1
+TASK 2-- COUNTDOWN CLOCK
+
+
+
+import time
+
+# Get the countdown time in seconds from the user (convert to integer)
+try:
+  countdown_time = int(input("Enter the countdown time in seconds: "))
+except ValueError:
+  print("Invalid input. Please enter a number of seconds.")
+  exit()
+
+# Display a message before the countdown starts
+print("Countdown starting in...")
+for i in range(3, 0, -1):  # Count down from 3 to 1 with a 1-second delay
+  print(i, "...")
+  time.sleep(1)
+
+# Main countdown loop
+while countdown_time > 0:
+  # Display the remaining time in a formatted way
+  minutes, seconds = divmod(countdown_time, 60)  # Separate minutes and seconds
+  time_display = f"{minutes:02d}:{seconds:02d}"  # Format with leading zeros for minutes/seconds
+  print(time_display)
+
+  # Decrement countdown time and sleep for 1 second
+  countdown_time -= 1
+  time.sleep(1)
+
+# Display a message when the countdown finishes
+print("Time's up!")
